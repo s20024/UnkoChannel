@@ -6,6 +6,10 @@
 
 カテゴリのデータを入れるために、
 下のコード汚いですけど、、、許してください。w
+
+あと、
+socket.io使うと思ってて、
+汚いコードで実装したのも許してください。😅
 */
 
 const express = require("express")
@@ -21,11 +25,11 @@ const passport = require("passport")
 const User = require("./models/user")
 
 mongoose.Promise = global.Promise
-mongoose.connect("mongodb://0.0.0.0:27017/test1_3_db")
+mongoose.connect("mongodb://0.0.0.0:27017/unko_channel_1")
     .then(() => {console.log("Successfully Connect MongoDb")})
     .catch(error => {throw error})
 
-app.set("port", process.env.PORT || 3200)
+app.set("port", process.env.PORT || 3000)
 app.set("view engine", "ejs")
 app.set("token", process.env.TOKEN || "helloToken0")
 
