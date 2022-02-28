@@ -4,7 +4,6 @@ const Category = require("../models/category")
 const threadSchema = require("../schemas/threadSchema")
 const messageSchema = require("../schemas/messageSchema")
 const mongoose = require("mongoose")
-const passport = require("passport")
 
 module.exports = {
     index: (req, res, next) => {
