@@ -1,5 +1,12 @@
 "use strict"
 
+/*
+こんにちは。
+お疲れ様です。やらです。
+
+カテゴリのデータを入れるために、
+*/
+
 const express = require("express")
 const app = express()
 const router = require("./routes/index")
@@ -66,12 +73,18 @@ app.use("/", router)
 
 const list = ["ApexLegends", "MonsterHunter", "Splatoon", "ARK", "SmashBros", "Nier:Automata"]
 const Category = require("./models/category")
-list.forEach(category => {
-    const categoryParams = { title: category }
-    Category.create(categoryParams)
-        .then(() => {console.log("successfully")})
-        .catch(() => {console.log("error")})
-})
+
+Category.findOne({title: list[0]})
+    .then((category) => {
+        if (!category) {
+            list.forEach(category => {
+                const categoryParams = { title: category }
+                Category.create(categoryParams)
+                    .then(() => {console.log("successfully")})
+                    .catch(() => {console.log("error")})
+            })
+        }
+    })
 
 const server = app.listen(app.get("port"), () => {
     console.log(`Server funning at http://localhost:${app.get("port")}`)
