@@ -30,7 +30,7 @@ module.exports = {
     new: (req, res) => {
         res.locals.fromCategory = req.query.category || ""
         res.locals.fromThread = req.query.thread || ""
-        res.render("users/new", {category: "", thread: ""})
+        res.render("users/new", {category: "", thread: "", message: "Create Account"})
     },
     create: (req, res, next) => {
         if (req.skip) return next()
@@ -39,7 +39,7 @@ module.exports = {
             if (user) {
                 next()
             } else {
-                res.render("users/new", {fromCategory: "", fromThread: "", category: "", thread: ""})
+                res.render("users/new", {fromCategory: "", fromThread: "", category: "", thread: "", message: "This loginId or This viewName are already used some user!"})
             }
         })
     },
