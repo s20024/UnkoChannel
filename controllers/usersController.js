@@ -39,7 +39,7 @@ module.exports = {
             if (user) {
                 next()
             } else {
-                res.render("users/new", {category: "", thread: ""})
+                res.render("users/new", {fromCategory: "", fromThread: "", category: "", thread: ""})
             }
         })
     },

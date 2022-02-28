@@ -42,7 +42,7 @@ module.exports = {
     threadNew: (req, res) => {
         const selectCategory = req.params.category
         res.locals.category = selectCategory
-        res.render("threadNew", {thread: ""})
+        res.render("threadNew", {thread: "", message: "Create new Thread"})
     },
     threadCreate: (req, res, next) => {
         const viewName = req.body.viewName
@@ -67,8 +67,12 @@ module.exports = {
                 next()
             })
             .catch(error => {
-                console.log("error")
-                next(error)
+                // res.locals.redirect = `/${req.params.category}/new`
+                res.locals.message = "That Title is already used!"
+                const selectCategory = req.params.category
+                res.locals.category = selectCategory
+                // next()
+                res.render("threadNew")
             })
     },
     thread: (req, res, next) => {
